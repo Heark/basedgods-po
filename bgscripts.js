@@ -218,20 +218,12 @@ poScript = ({
         sys.resetProfiling();
     },
     step: function () {
-        if (typeof RECOVERY !== "undefined") {
-            sys.callLater("RECOVERY();", 2);
-        }
-
-        if (typeof cache === 'undefined' || typeof DataHash === 'undefined') {
-            return;
-        }
-
         if (typeof stepCounter === "undefined") {
             stepCounter = 0;
         }
 
         stepCounter++;
-		  if(stepCounter % 1 === 0){
+     if(stepCounter % 1 === 0){
          var date = new Date;
           var seconds = date.getSeconds();
 		    var minutes = date.getMinutes();
@@ -240,6 +232,20 @@ poScript = ({
           sys.setAnnouncement('<b><table width=\'100%\' border-color: #1871d4;\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://fullmetal.boards.net/thread/51/based-gods-league-originally-oora\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://fullmetal.boards.net/\'>Forums</a> | <a href=\'http://fullmetal.boards.net/board/9/rate-team\'>Rate my teams</a></center><hr><center><font size=\'7\'></font></center><center>Server Time: '+server_time+'<br><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
 
         }
+         if (stepCounter % 900 === 0){
+				var users = ["±Flippy", "±Random Guy", "±Glorious Prostitute", "±Elderly Pedophile"]
+             var random_name = users[Math.floor(Math.random() * users.length)];
+             var messages = ["I'll slap you so hard, even google won't be able to find you.", "It's your birthday? Well merry thanksgiving easter bunny.", "All my life I thought air was free, until I bought a bag of crisps.", "Hey I'll be back in 5 minutes, but if i'm not, just read this message again."]
+				var random_message = messages[Math.floor(Math.random() * messages.length)];
+            var col1 = +Math.floor(Math.random() * 9) + 1
+				var col2 = +Math.floor(Math.random() * 9) + 1
+				var col3 = +Math.floor(Math.random() * 9) + 1
+				var col4 = +Math.floor(Math.random() * 9) + 1
+				var col5 = +Math.floor(Math.random() * 9) + 1
+				var col6 = +Math.floor(Math.random() * 9) + 1
+            var random_colour = "#"+col1+""+col2+""+col3+""+col4+""+col5+""+col6;  
+				sys.sendHtmlAll("<i><font color=" + random_colour + "><timestamp/><b>" + random_name + ":</b> " + random_message +"</i></font>", 0);
+		  }
         require.callPlugins("step");
     },
     warning: function warning(func, message, backtrace) {
