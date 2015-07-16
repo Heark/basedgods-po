@@ -2669,7 +2669,7 @@ JSESSION.refill();
         }
 
         botMessage(src, "Welcome, " + me + "!", 0);
-
+        botMessage(src, "Make sure you check out our <a href=\"http://fullmetal.boards.net/\">Forums</a>", 0);
         botMessage(src, "Type in <b><font color=green>/Commands</font></b> to see the commands and <b><font color=green>/Rules</font></b> to see the rules.", 0);
 
         if (typeof startupTime === 'number' && !isNaN(startupTime)) {
