@@ -2,13 +2,23 @@
     By: [VP]Blade, TheUnknownOne, Ethan
     Credit to: Max, Lutra
 */
+var steam = '{"steamroller":[' +
+'{"Name":"JoyFrost","Score":0 },' +
+'{"Name":"Heark","Score":1 }]}';
+
+var steamobj = JSON.parse(steam).steamroller;
+var jsonText = '{"data":{"one":21,"two":35,"three":24,"four":2,"five":18},"meta":{"title":"Happy with the service"}}'
+var data = JSON.parse(jsonText).data
+var maxProp = null
+var maxValue = -1
+
 
 Config = {
     // Configuration for the script.
     servername: "Based Gods",
 
     maintainers: ['Heark'],
-
+    
     // Repo to load plugins from.
     repourl: "http://meteor-falls.github.io/Scripts/",
     // Repo to load data (announcement/description + tiers) from.
@@ -228,7 +238,8 @@ poScript = ({
           var seconds = date.getSeconds();
 		    var minutes = date.getMinutes();
 			 var hour = date.getHours();
-            var server_time = hour+":"+minutes+":"+seconds
+          var server_time = hour+":"+minutes+":"+seconds;
+       
           sys.setAnnouncement('<b><table width=\'100%\' border-color: #1871d4;\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://fullmetal.boards.net/thread/51/based-gods-league-originally-oora\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://fullmetal.boards.net/\'>Forums</a> | <a href=\'http://fullmetal.boards.net/board/9/rate-team\'>Rate my teams</a></center><hr><center><font size=\'7\'></font></center><center>Server Time: '+server_time+'<br><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
 
         }
