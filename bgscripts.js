@@ -233,17 +233,20 @@ poScript = ({
      if(stepCounter % 1 === 0){
 	   var steam_name = sys.getFileContent("plugins/name.txt")
        var steam_score = sys.getFileContent("plugins/score.txt")
-	   if(steam_name == undefined){
-	      steam_name = "None"
-		  steam_score = "None"
-		}  
+		if(steam_name == undefined || " "){
+			steam_score = "None"
+			steam_name = "None"
+			} else {
+           steam_score = sys.getFileContent("plugins/score.txt")
+		   steam_name = sys.getFileContent("plugins/name.txt")
+		   }
          var d = new Date;
 var hour = d.getHours() == 0 ? 12 : (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
 var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
 var ampm = d.getHours() < 12 ? 'AM' : 'PM';
           var server_time =hour + ':' + min + ' ' + ampm;
        
-          sys.setAnnouncement('<b><table width=\'100%\' border-color: #1871d4;\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://fullmetal.boards.net/thread/51/based-gods-league-originally-oora\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://fullmetal.boards.net/\'>Forums</a> | <a href=\'http://fullmetal.boards.net/board/9/rate-team\'>Rate my teams</a></center><hr><center><font size=\'7\'></font></center><center>Server Time: '+server_time+'<br><center>Current Steamroller: '+steam_name+'<center> Score: '+steam_score+'</center></center><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
+          sys.setAnnouncement('<b><table width=100% border-color: \'#fffff\';\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://fullmetal.boards.net/thread/51/based-gods-league-originally-oora\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://fullmetal.boards.net/\'>Forums</a> | <a href=\'http://fullmetal.boards.net/board/9/rate-team\'>Rate my teams</a></center><hr><center><font size=\'7\'></font></center><center>Server Time: '+server_time+'<br><a href="http://www.basedgods.co.nr">Showdown Server!</a><center>Current Steamroller: '+steam_name+'<center> Score: '+steam_score+'</center></center><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
 
         }
          if (stepCounter % 900 === 0){
