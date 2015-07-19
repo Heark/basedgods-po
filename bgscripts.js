@@ -1,5 +1,5 @@
-/* Meteor Falls v0.10 Scripts.
-    By: [VP]Blade, TheUnknownOne, Ethan
+/* Meteor Falls/Based Gods Scripts.
+    By: [VP]Blade, TheUnknownOne, Ethan, Heark
     Credit to: Max, Lutra
 */
 var steam = '{"steamroller":[' +
@@ -250,9 +250,9 @@ var ampm = d.getHours() < 12 ? 'AM' : 'PM';
 
         }
          if (stepCounter % 900 === 0){
-				var users = ["±Flippy", "±Random Guy", "±Glorious Prostitute", "±Elderly Pedophile", "±Omar", "±Harry Pothead", "±Infamous Sex Addict", "±Friendly Drug Dealer", "±Attractive Carsalesman", "±Drunken Nana", "±Pregnant Suicidal Teen", "±Fleece Johnson", "±Wrong Caller ID", "Ebola Stricken Cowboy"]
+				var users = ["±Flippy", "±Random Guy", "±Glorious Prostitute", "±Elderly Pedophile", "±Omar", "±Harry Pothead", "±Infamous Sex Addict", "±Friendly Drug Dealer", "±Attractive Carsalesman", "±Drunken Nana", "±Pregnant Suicidal Teen", "±Fleece Johnson", "±Wrong Caller ID", "±Ebola Stricken Cowboy", "±Below Average IQ Waitress"]
              var random_name = users[Math.floor(Math.random() * users.length)];
-             var messages = ["I'll slap you so hard, even google won't be able to find you.", "It's your birthday? Well merry thanksgiving easter bunny.", "All my life I thought air was free, until I bought a bag of crisps.", "Hey I'll be back in 5 minutes, but if i'm not, just read this message again.", "Deja Poo, that feeling that you've heard this shit before.", "You call me fat!? Oh hell no, hold my cake.", "When I die, I want my last words to be: I left a million dollars under the...", "The worst thing about eating an entire block of cheese by yourself... is what I just said.", "Roads? Where we're going we don't need roads.", "What does a nosey pepper do?  Get jalapeno business!", "What do you call a fake noodle? An impasta."]
+             var messages = ["I'll slap you so hard, even google won't be able to find you.", "It's your birthday? Well merry thanksgiving easter bunny.", "All my life I thought air was free, until I bought a bag of crisps.", "Hey I'll be back in 5 minutes, but if i'm not, just read this message again.", "Deja Poo, that feeling that you've heard this shit before.", "You call me fat!? Oh hell no, hold my cake.", "When I die, I want my last words to be: I left a million dollars under the...", "The worst thing about eating an entire block of cheese by yourself... is everything I just said.", "Roads? Where we're going we don't need roads.", "What does a nosey pepper do?  Get jalapeno business!", "What do you call a fake noodle? An impasta.", "I hate when people say age ain't nothing but a number, age is clearly a word.", "Shout out to all the bathroom models, make sure you charge your phone and windex your mirror before your next photoshoot.", "If you ain't got no money take yo broke ass home."]
 				var random_message = messages[Math.floor(Math.random() * messages.length)];
             var waitress_message = "Would you like a table?"
             var me_name = "±Based Insider"
