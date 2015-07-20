@@ -11,9 +11,8 @@
         tourplayers = [],
         battlesStarted = [],
         battlesLost = [];
-        var steam_name;
-		var steam_score;
-	var this__ = '{"score":{"one":21,"two":35,"three":24,"four":2,"five":18},"meta":{"title":"Happy with the service"}}'
+    var steamroller_name;
+	var steamroller_score;
     function tourbox(msg) {
         sys.sendHtmlAll("<br/><center><table width=50% bgcolor=gray><tr style='background-color:" + gradient + "'><td align=center><br/>" + msg + "<br/></td></tr></table></center><br/>", 0);
     }
@@ -395,25 +394,21 @@
         tourbattlers = [];
         battlesLost = [];
         if (tourmembers.length === 1) {
-
-		    steam_name = tourplayers[tourmembers[0]]
-		if(steam_name == tourplayers[tourmembers[0]]){
-			steam_score += 1;
-			sys.writeToFile("plugins/name.txt", steam_name);
-			sys.writeToFile("plugins/score.txt", steam_score);
-			} else {
-			steam_score = 1;
-			if(steam_name == undefined || " "){
-				steam_score = "None"
-				steam_name = "None"
-			}
-			sys.writeToFile("plugins/name.txt", steam_roller.name);
-			sys.writeToFile("plugins/score.txt", steam_roller.score);
-			};
             tourbox("<font style='font-size:20px; font-weight:bold;'><font style='font-size:25px;'>C</font>ongratulations, <i style='color:red; font-weight:bold;'>" + Utils.escapeHtml(tourplayers[tourmembers[0]]) + "!</i></font><hr width=300/><br><b>You won the tournament! You win " + prize + "!</b>");
-
-			
-			tourmode = 0;
+		 steamroller_name = tourplayers[tourmembers[0]]
+		 if(sys.exists("plugins/name.txt") == true){ 
+		   if(sys.getFileContent("plugins/name.txt") == tourplayers[tourmembers[0]]){
+			   steamroller_score += 1
+			   sys.writeToFile("plugins/score.txt", steamroller_score.toString())
+		   } else {
+			   sys.writeToFile("plugins/name.txt", steamroller_name)
+			   sys.writeToFile("plugins/score.txt", "1")
+		   }
+		  } else {
+			  sys.writeToFile("plugins/name.txt", steamroller_name)
+			  sys.writeToFile("plugins/score.txt", "1")
+		  }
+		   tourmode = 0;
             isFinals = false;
             return;
         }
