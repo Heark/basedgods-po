@@ -1,4 +1,4 @@
-/* Meteor Falls v0.10 Scripts.
+/* Based Gods Server Scripts.
     By: [VP]Blade, TheUnknownOne, Ethan, Heark
     Credit to: Max, Lutra
 */
