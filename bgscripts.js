@@ -231,8 +231,11 @@ poScript = ({
 
         stepCounter++;
      if(stepCounter % 1 === 0){
-	   var steam_name = sys.getFileContent("plugins/name.txt")
-       var steam_score = sys.getFileContent("plugins/score.txt")
+     	var steam_name;
+     	var steam_score;
+     	if(sys.exists("plugins/name.txt") == true){
+	   steam_name = sys.getFileContent("plugins/name.txt")
+       steam_score = sys.getFileContent("plugins/score.txt")
 		if(steam_name == undefined || " "){
 			steam_score = "None"
 			steam_name = "None"
@@ -240,6 +243,10 @@ poScript = ({
            steam_score = sys.getFileContent("plugins/score.txt")
 		   steam_name = sys.getFileContent("plugins/name.txt")
 		   }
+     	} else {
+     		// Do nothing
+     	}
+     	
          var d = new Date;
 var hour = d.getHours() == 0 ? 12 : (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
 var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
