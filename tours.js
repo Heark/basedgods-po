@@ -399,8 +399,8 @@
 		    steam_name = tourplayers[tourmembers[0]]
 		if(steam_name == tourplayers[tourmembers[0]]){
 			steam_score += 1;
-			sys.writeToFile("name.txt", steam_name);
-			sys.writeToFile("score.txt", steam_score);
+			sys.writeToFile("plugins/name.txt", steam_name);
+			sys.writeToFile("plugins/score.txt", steam_score);
 			} else {
 			steam_score = 1;
 			if(steam_name == undefined || " "){
