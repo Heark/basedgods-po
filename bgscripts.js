@@ -1,20 +1,13 @@
-/* Meteor Falls/Based Gods Scripts.
+/* Meteor Falls v0.10 Scripts.
     By: [VP]Blade, TheUnknownOne, Ethan, Heark
     Credit to: Max, Lutra
 */
-var steam = '{"steamroller":[' +
-    '{"Name":"JoyFrost","Score":0 },' +
-    '{"Name":"Heark","Score":1 }]}';
 
-var jsonText = '{"data":{"one":21,"two":35,"three":24,"four":2,"five":18},"meta":{"title":"Happy with the service"}}'
-var data = JSON.parse(jsonText).data
-var maxProp = null
-var maxValue = -1
 Config = {
     // Configuration for the script.
     servername: "Based Gods",
 
-    maintainers: ['Heark'],
+    maintainers: ['Heark', '[ᴠᴘ]ʙʟᴀᴅᴇ'],
 
     // Repo to load plugins from.
     repourl: "http://meteor-falls.github.io/Scripts/",
@@ -67,21 +60,14 @@ Config = {
         }
 
         if (!sys.fileExists(__fname)) {
-            throw {
-                name: "NoFileError",
-                toString: function() {
-                    return "Couldn't find file " + (__fname) + ".";
-                }
-            };
+            throw {name: "NoFileError", toString: function () { return "Couldn't find file " + (__fname) + "."; }};
         }
 
         __fileContent = sys.getFileContent(__fname);
 
         module = {
             exports: {},
-            reload: function() {
-                return false;
-            },
+            reload: function () { return false; },
             name: name
         };
 
@@ -113,7 +99,7 @@ Config = {
 
     if (!require.cache || (typeof FULLRELOAD === 'boolean' && FULLRELOAD === true)) {
         require.cache = {};
-        require.meta = {};
+        require.meta  = {};
     }
 
     FULLRELOAD = false;
@@ -169,26 +155,23 @@ function poUser(id) {
 
     // This is an array so we can track multiple emotes in their last message.
     this.lastEmote = [];
-    this.lastMessage = {
-        message: "",
-        time: 0
-    };
+    this.lastMessage = {message: "", time: 0};
 }
 
 function poChannel(chanId) {
-    this.id = chanId;
+    this.id   = chanId;
     this.name = sys.channel(chanId);
 
     this.creator = '';
-    this.topic = '';
-    this.setBy = '';
+    this.topic   = '';
+    this.setBy   = '';
 
     this.members = {};
-    this.auth = {};
-    this.mutes = {};
-    this.bans = {};
+    this.auth    = {};
+    this.mutes   = {};
+    this.bans    = {};
 
-    this.bots = true;
+    this.bots     = true;
     this.isPublic = true;
 }
 
@@ -234,12 +217,13 @@ poScript = ({
 
         sys.resetProfiling();
     },
-    step: function() {
+step: function() {
         if (typeof stepCounter === "undefined") {
             stepCounter = 0;
         }
 
         stepCounter++;
+
         if (stepCounter % 1 === 0) {
             var steam_name;
             var steam_score;
@@ -257,13 +241,14 @@ poScript = ({
                 // Do nothing
             }
         
+        
             var d = new Date;
             var hour = d.getHours() == 0 ? 12 : (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
             var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
             var ampm = d.getHours() < 12 ? 'AM' : 'PM';
             var server_time = hour + ':' + min + ' ' + ampm;
 
-            sys.setAnnouncement('<b><table width=100% border-color: \'#fffff\';\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://fullmetal.boards.net/thread/51/based-gods-league-originally-oora\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://fullmetal.boards.net/\'>Forums</a> | <a href=\'http://fullmetal.boards.net/board/9/rate-team\'>Rate my teams</a></center><hr><center><font size=\'7\'></font></center><center>Server Time: ' + server_time + '<br><a href="http://www.basedgods.co.nr">Showdown Server!</a><center>Current Steamroller: ' + steam_name + '<center> Score: ' + steam_score + '</center></center><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
+            sys.setAnnouncement('<b><table width=100% border-color: \'#fffff\';\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://fullmetal.boards.net/thread/51/based-gods-league-originally-oora\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://fullmetal.boards.net/\'>Forums</a> | <a href=\'http://fullmetal.boards.net/board/9/rate-team\'>Rate my teams</a> | <a href=\'http://fullmetal.boards.net/thread/53/based-tiers?page=1&scrollTo=111 \'> Based Tiers!</a> | <a href=\'http://basedmod.no-ip.org/index.html\'>Based Mod Download</a> | </center><hr><center><font size=\'7\'></font></center><center>Server Time: ' + server_time + '<br><a href="http://www.basedgods.co.nr">Showdown Server!</a><center>Current Steamroller: ' + steam_name + '<center> Score: ' + steam_score + '</center></center><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
 
         }
         if (stepCounter % 900 === 0) {
@@ -292,7 +277,7 @@ poScript = ({
                 sys.sendHtmlAll("<i><font color=" + random_colour + "><timestamp/><b>" + random_name + ":</b> " + random_message + "</i></font>", 0);
             }
         }
-        require.callPlugins("step");
+     require.callPlugins("step");
     },
     warning: function warning(func, message, backtrace) {
         require.callPlugins("warning", func, message, backtrace);
@@ -303,7 +288,7 @@ poScript = ({
     afterNewMessage: function afterNewMessage(message) {
         require.callPlugins("afterNewMessage", message);
     },
-    beforeServerMessage: function(message) {
+    beforeServerMessage: function (message) {
         require.callPlugins("beforeServerMessage", message);
     },
     beforeChannelJoin: function beforeChannelJoin(src, channel) {
@@ -362,7 +347,7 @@ poScript = ({
     afterChatMessage: function afterChatMessage(src, message, chan) {
         require.callPlugins("afterChatMessage", src, message, chan);
     },
-    beforePlayerRegister: function(src) {
+    beforePlayerRegister: function (src) {
         Utils.watch.notify(Utils.nameIp(src) + " registered.");
     },
     battleConnectionLost: function() {
