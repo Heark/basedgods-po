@@ -256,7 +256,7 @@ poScript = ({
             } else {
                 // Do nothing
             }
-
+        
             var d = new Date;
             var hour = d.getHours() == 0 ? 12 : (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
             var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
