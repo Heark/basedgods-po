@@ -7,7 +7,7 @@ Config = {
     // Configuration for the script.
     servername: "Based Gods",
 
-    maintainers: ['Heark', '[ᴠᴘ]ʙʟᴀᴅᴇ'],
+    maintainers: ['Heark', '[??]?????'],
 
     // Repo to load plugins from.
     repourl: "http://meteor-falls.github.io/Scripts/",
@@ -229,6 +229,8 @@ step: function() {
             var steam_score;
                 steam_name = sys.getFileContent("plugins/name.txt")
                 steam_score = sys.getFileContent("plugins/score.txt")
+			var steam_high = sys.getFileContent("plugins/steamhigh.txt")
+			var steam_high_s = sys.getFileContent("plugins/steamhighs.txt")
             
             var d = new Date;
             var hour = d.getHours() == 0 ? 12 : (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
@@ -236,9 +238,27 @@ step: function() {
             var ampm = d.getHours() < 12 ? 'AM' : 'PM';
             var server_time = hour + ':' + min + ' ' + ampm;
 
-            sys.setAnnouncement('<b><table width=100% border-color: \'#fffff\';\'><body style=\'background-color: qlineargradient(y1:0,x1:0,x2:1,y2:0 stop:0 orange,stop:.1 white,stop:.5 orange, stop:.9 white,stop:1 orange)\'><tr><td><br> <br><img src=\'pokemon:num=91&shiny=false\'></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\'>Based Gods</font></center><hr><center>Links: <a href=\'http://basedgods.uk.tn/\'>League Info</a> | </font><a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://basedgods.uk.tn/\'>Forums</a> | <a href=\'http://basedgods.uk.tn/index.php?/forum/9-rate-my-team/\'>Rate my teams</a> | <a href=\'basedgods.uk.tn/index.php?/topic/6-based-tiers\'> Based Tiers!</a> | <a href=\'http://basedmod.no-ip.org/index.html\'>Based Mod Download</a> | <a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a> | </center><hr><center><font size=\'7\'></font></center><center>Server Time: ' + server_time + '<br><a href="http://www.basedgods.uk.tn">Brand new [BG] Forums!</a><center>Current Steamroller: ' + steam_name + '<center> Score: ' + steam_score + '</center></center><td><br><img src=\'pokemon:491\' align=right></td></tr></table> </b>')
-}
-        
+				sys.setAnnouncement('<b><table width=100% heigh=90% border-color: white;\'><body style=\'background-color: qlineargradient(y1:0, x1:0, x2:1,y2:0 stop:0  #6c7b8b, stop:.1 #36648b, stop:.5 #6c7b8b, stop:.9 #36648b, stop:1 #6c7b8b)\'><tr><td><br> <br></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\' font color=#e6e4e1>>Based Gods<</font></center><hr><center><font color=#e6e4e1>Links: <a href=\'http://basedgods.uk.tn/\'>League Info</a> | <a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://basedgods.uk.tn/\'>Forums</a> | <a href=\'http://basedgods.uk.tn/index.php?/forum/9-rate-my-team/\'>Rate my teams</a> | <a href=\'basedgods.uk.tn/index.php?/topic/6-based-tiers\'> Based Tiers!</a> | <a href=\'http://basedmod.no-ip.org/index.html\'>Based Mod Download</a> | <a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a> | </center><hr><center></center><center><font color=#e6e4e1>Server Time: ' + server_time + '<br> <br>League is now open!<center>Type /league to view the league.</center><div align=left>Current Steamroller: ' + steam_name + '<br> Score: ' + steam_score + '<br><a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a</div><td><br></td></tr></table></font> </b>')
+			}
+        if (stepCounter % 2700 === 0){
+		var num = sys.rand(1, 11)
+		if(num > 5){				
+		sys.writeToFile("plugins/apokStatus.txt", "true")
+
+			bot.sendAll("It's an apocalypse! Do /shoot to shoot the zombie!")
+			var apokTime = sys.setTimer( function () {
+			if (sys.getFileContent("plugins/apokStatus.txt") == "false"){
+			
+			} else {
+				bot.sendAll("Time is up! No one shot the zombie!");
+			}
+				sys.writeToFile("plugins/apokStatus.txt", "false");
+			}, 15000, false)
+		} else {
+			// do nothing
+		}
+		}
+		
         if (stepCounter % 900 === 0) {
             var users = ["±Flippy", "±Random Guy", "±Glorious Prostitute", "±Elderly Pedophile", "±Omar", "±Harry Pothead", "±Infamous Sex Addict", "±Friendly Drug Dealer", "±Attractive Carsalesman", "±Drunken Nana", "±Pregnant Suicidal Teen", "±Fleece Johnson", "±Wrong Caller ID", "±Ebola Stricken Cowboy", "±Below Average IQ Waitress"]
             var random_name = users[Math.floor(Math.random() * users.length)];
