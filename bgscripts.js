@@ -2,6 +2,7 @@
     By: [VP]Blade, TheUnknownOne, Ethan, Heark
     Credit to: Max, Lutra
 */
+
 Config = {
     // Configuration for the script.
     servername: "Based Gods",
@@ -59,21 +60,14 @@ Config = {
         }
 
         if (!sys.fileExists(__fname)) {
-            throw {
-                name: "NoFileError",
-                toString: function() {
-                    return "Couldn't find file " + (__fname) + ".";
-                }
-            };
+            throw {name: "NoFileError", toString: function () { return "Couldn't find file " + (__fname) + "."; }};
         }
 
         __fileContent = sys.getFileContent(__fname);
 
         module = {
             exports: {},
-            reload: function() {
-                return false;
-            },
+            reload: function () { return false; },
             name: name
         };
 
@@ -105,7 +99,7 @@ Config = {
 
     if (!require.cache || (typeof FULLRELOAD === 'boolean' && FULLRELOAD === true)) {
         require.cache = {};
-        require.meta = {};
+        require.meta  = {};
     }
 
     FULLRELOAD = false;
@@ -161,26 +155,23 @@ function poUser(id) {
 
     // This is an array so we can track multiple emotes in their last message.
     this.lastEmote = [];
-    this.lastMessage = {
-        message: "",
-        time: 0
-    };
+    this.lastMessage = {message: "", time: 0};
 }
 
 function poChannel(chanId) {
-    this.id = chanId;
+    this.id   = chanId;
     this.name = sys.channel(chanId);
 
     this.creator = '';
-    this.topic = '';
-    this.setBy = '';
+    this.topic   = '';
+    this.setBy   = '';
 
     this.members = {};
-    this.auth = {};
-    this.mutes = {};
-    this.bans = {};
+    this.auth    = {};
+    this.mutes   = {};
+    this.bans    = {};
 
-    this.bots = true;
+    this.bots     = true;
     this.isPublic = true;
 }
 
@@ -226,7 +217,7 @@ poScript = ({
 
         sys.resetProfiling();
     },
-    step: function() {
+step: function() {
         if (typeof stepCounter === "undefined") {
             stepCounter = 0;
         }
@@ -236,38 +227,40 @@ poScript = ({
         if (stepCounter % 1 === 0) {
             var steam_name;
             var steam_score;
-            steam_name = sys.getFileContent("plugins/name.txt")
-            steam_score = sys.getFileContent("plugins/score.txt")
-            var steam_high = sys.getFileContent("plugins/steamhigh.txt")
-            var steam_high_s = sys.getFileContent("plugins/steamhighs.txt")
-
+                steam_name = sys.getFileContent("plugins/name.txt")
+                steam_score = sys.getFileContent("plugins/score.txt")
+			var steam_high = sys.getFileContent("plugins/steamhigh.txt")
+			var steam_high_s = sys.getFileContent("plugins/steamhighs.txt")
+            
             var d = new Date;
             var hour = d.getHours() == 0 ? 12 : (d.getHours() > 12 ? d.getHours() - 12 : d.getHours());
             var min = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
             var ampm = d.getHours() < 12 ? 'AM' : 'PM';
+			var killed_zombies = sys.getFileContent("plugins/zombies.txt");
+			var zombie_killer = sys.getFileContent("plugins/zombiekiller.txt")
             var server_time = hour + ':' + min + ' ' + ampm;
 
-            sys.setAnnouncement('<b><table width=100% heigh=90% border-color: white;\'><body style=\'background-color: qlineargradient(y1:0, x1:0, x2:1,y2:0 stop:0  #6c7b8b, stop:.1 #36648b, stop:.5 #6c7b8b, stop:.9 #36648b, stop:1 #6c7b8b)\'><tr><td><br> <br></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\' font color=#e6e4e1>>Based Gods<</font></center><hr><center><font color=#e6e4e1>Links: <a href=\'http://basedgods.uk.tn/\'>League Info</a> | <a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://basedgods.uk.tn/\'>Forums</a> | <a href=\'http://basedgods.uk.tn/index.php?/forum/9-rate-my-team/\'>Rate my teams</a> | <a href=\'basedgods.uk.tn/index.php?/topic/6-based-tiers\'> Based Tiers!</a> | <a href=\'http://basedmod.no-ip.org/index.html\'>Based Mod Download</a> | <a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a> | </center><hr><center></center><center><font color=#e6e4e1>Server Time: ' + server_time + '<br> <br>League is now open!<center>Type /league to view the league.</center><div align=left>Current Steamroller: ' + steam_name + '<br> Score: ' + steam_score + '<br><a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a</div><td><br></td></tr></table></font> </b>')
-        }
-        if (stepCounter % 2700 === 0) {
-            var num = sys.rand(1, 11)
-            if (num > 5) {
-                sys.writeToFile("plugins/apokStatus.txt", "true")
+				sys.setAnnouncement('<b><table width=100% heigh=90% border-color: white;\'><body style=\'background-color: qlineargradient(y1:0, x1:0, x2:1,y2:0 stop:0  #6c7b8b, stop:.1 #36648b, stop:.5 #6c7b8b, stop:.9 #36648b, stop:1 #6c7b8b)\'><tr><td><br> <br></td><td><img src=\'pokemon:num=383-1&shiny=false\' align=left><img src=\'pokemon:num=717&shiny=false\' align=right><center><font face=\'Ketchum\' font size=\'12\' font color=#e6e4e1>>Based Gods<</font></center><hr><center><font color=#e6e4e1>Links: <a href=\'http://basedgods.uk.tn/\'>League Info</a> | <a href=\'https://pokemonshowdown.com/damagecalc/\'> Damage Calculator</a> | <a href=\'http://basedgods.uk.tn/\'>Forums</a> | <a href=\'http://basedgods.uk.tn/index.php?/forum/9-rate-my-team/\'>Rate my teams</a> | <a href=\'basedgods.uk.tn/index.php?/topic/6-based-tiers\'> Based Tiers!</a> | <a href=\'http://basedmod.no-ip.org/index.html\'>Based Mod Download</a> | <a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a> | </center><hr><center></center><center><font color=#e6e4e1>Server Time: ' + server_time + '<br> <br>League is now open!<center>Type /league to view the league.</center><div align=right>Total Zombies Killed: '+killed_zombies+' | Recent Killer: '+zombie_killer+'</div><div align=left>Current Steamroller: ' + steam_name + '<br>Score: ' + steam_score + '<br><a href=\'http://basedgods.uk.tn/index.php?/topic/5-steamroller/ \'>Steamroller Rules!</a></div><td><br></td></tr></table></font> </b>')
+			}
+        if (stepCounter % 2800 === 0){
+		var num = sys.rand(1, 11)
+		if(num > 5){				
+		sys.writeToFile("plugins/apokStatus.txt", "true")
 
-                bot.sendAll("It's an apocalypse! Do /shoot to shoot the zombie!")
-                var apokTime = sys.setTimer(function() {
-                    if (sys.getFileContent("plugins/apokStatus.txt") == "false") {
-
-                    } else {
-                        bot.sendAll("Time is up! No one shot the zombie!");
-                    }
-                    sys.writeToFile("plugins/apokStatus.txt", "false");
-                }, 15000, false)
-            } else {
-                // do nothing
-            }
-        }
-
+			bot.sendAll("It's an apocalypse! Do /shoot to shoot the zombie!")
+			var apokTime = sys.setTimer( function () {
+			if (sys.getFileContent("plugins/apokStatus.txt") == "false"){
+			
+			} else {
+				bot.sendAll("Time is up! No one shot the zombie!");
+			}
+				sys.writeToFile("plugins/apokStatus.txt", "false");
+			}, 30000, false)
+		} else {
+			// do nothing
+		}
+		}
+		
         if (stepCounter % 900 === 0) {
             var users = ["±Flippy", "±Random Guy", "±Glorious Prostitute", "±Elderly Pedophile", "±Omar", "±Harry Pothead", "±Infamous Sex Addict", "±Friendly Drug Dealer", "±Attractive Carsalesman", "±Drunken Nana", "±Pregnant Suicidal Teen", "±Fleece Johnson", "±Wrong Caller ID", "±Ebola Stricken Cowboy", "±Below Average IQ Waitress"]
             var random_name = users[Math.floor(Math.random() * users.length)];
@@ -294,7 +287,7 @@ poScript = ({
                 sys.sendHtmlAll("<i><font color=" + random_colour + "><timestamp/><b>" + random_name + ":</b> " + random_message + "</i></font>", 0);
             }
         }
-        require.callPlugins("step");
+     require.callPlugins("step");
     },
     warning: function warning(func, message, backtrace) {
         require.callPlugins("warning", func, message, backtrace);
@@ -305,7 +298,7 @@ poScript = ({
     afterNewMessage: function afterNewMessage(message) {
         require.callPlugins("afterNewMessage", message);
     },
-    beforeServerMessage: function(message) {
+    beforeServerMessage: function (message) {
         require.callPlugins("beforeServerMessage", message);
     },
     beforeChannelJoin: function beforeChannelJoin(src, channel) {
@@ -364,7 +357,7 @@ poScript = ({
     afterChatMessage: function afterChatMessage(src, message, chan) {
         require.callPlugins("afterChatMessage", src, message, chan);
     },
-    beforePlayerRegister: function(src) {
+    beforePlayerRegister: function (src) {
         Utils.watch.notify(Utils.nameIp(src) + " registered.");
     },
     battleConnectionLost: function() {
