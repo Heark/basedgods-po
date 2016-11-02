@@ -13,7 +13,7 @@ Config = {
     repourl: "http://meteor-falls.github.io/Scripts/",
     // Repo to load data (announcement/description + tiers) from.
     dataurl: "http://meteor-falls.github.io/Server-Shit/",
-    emotesurl: 'https://raw.githubusercontent.com/Heark/basedgods-po/master/emotes.json',
+    emotesurl: 'https://raw.githubusercontent.com/HearkOld/basedgods-po/master/emotes.json',
 
     // Plugin directory.
     plugindir: "plugins/",
